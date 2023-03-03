@@ -4,27 +4,29 @@ import BuddyRequest as BR
 
 
 
-HOST = input("Enter the network address to connect to: ")
-
+#HOST = input("Enter the network address to connect to: ")
+HOST = '127.0.0.1'
 # check valid network address
 # check whether we are able to ping the addess
 
-PORT = int(input("Enter the port number to connect to: "))
+#PORT = int(input("Enter the port number to connect to: "))
+PORT = 52777
 
 # check valid port
 
-request = input("Enter the operation to request (Date and Time, Uptime, Memory Use, Netstat, Current Users, or Running Processes): ")
-
+#request = input("Enter the operation to request (Date and Time, Uptime, Memory Use, Netstat, Current Users, or Running Processes): ")
+request = 'uptime'
 # change to switcher
 
-numOfRequests = int(input("Enter the number of client requests to generate (1, 5, 10, 15, 20, or 25): "))
-
+#numOfRequests = int(input("Enter the number of client requests to generate (1, 5, 10, 15, 20, or 25): "))
+numOfRequests = 10
 # change to switcher
 
+elapsedTimes = []
 threads = []
 
 for i in range(numOfRequests):
-    t = threading.Thread(target=BR.buddyRequest, args=(HOST, PORT, request))
+    t = threading.Thread(target=BR.buddyRequest, args=(HOST, PORT, request,elapsedTimes))
     threads.append(t)
 
 for t in threads:
@@ -33,7 +35,7 @@ for t in threads:
 for t in threads:
     t.join()
 
-totalTime = sum(t.result() for t in threads)
+totalTime = sum(elapsedTimes)
 avgTime = totalTime / numOfRequests
 
 print("Total turn-around time: {:.3f} seconds".format(totalTime))
