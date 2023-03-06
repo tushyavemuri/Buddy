@@ -1,7 +1,11 @@
 import threading
-import BuddyRequest as BR
+import buddyrequest as BR
+import logging
+import logging.config
 
-
+# Logger settings
+logging.config.fileConfig("budlog.conf")
+logging.getLogger('buddyConsoleLogger')
 
 
 #HOST = input("Enter the network address to connect to: ")
@@ -10,7 +14,7 @@ HOST = '127.0.0.1'
 # check whether we are able to ping the addess
 
 #PORT = int(input("Enter the port number to connect to: "))
-PORT = 52777
+PORT = 55777
 
 # check valid port
 
@@ -38,8 +42,8 @@ for t in threads:
 totalTime = sum(elapsedTimes)
 avgTime = totalTime / numOfRequests
 
-print("Total turn-around time: {:.3f} seconds".format(totalTime))
-print("Average turn-around time: {:.3f} seconds".format(avgTime))
+logging.info("Total turn-around time: {:.3f} seconds".format(totalTime))
+logging.info("Average turn-around time: {:.3f} seconds".format(avgTime))
 
 
 

@@ -1,5 +1,6 @@
 import socket
 import time
+import logging
 
 
 def buddyRequest(HOST,PORT,request,elapsedTimes):
@@ -9,12 +10,14 @@ def buddyRequest(HOST,PORT,request,elapsedTimes):
     startTime = time.time()
 
     buddy.send(request.encode())
-    response = buddy.recv(1024)
+    response = buddy.recv(1024).decode('utf-8')
 
     endTime = time.time()
     elapsedTime = endTime - startTime
-    #print("request took {:.3f} seconds".format(elapsedTime))
+    logging.info("request took {:.3f} seconds".format(elapsedTime))
 
     buddy.close()
 
     elapsedTimes.append(elapsedTime)
+
+    return response
