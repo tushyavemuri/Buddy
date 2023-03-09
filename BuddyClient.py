@@ -8,18 +8,18 @@ logging.config.fileConfig("budlog.conf")
 logging.getLogger('buddyConsoleLogger')
 
 
-#HOST = input("Enter the network address to connect to: ")
-HOST = '127.0.0.1'
+HOST = input("Enter the network address to connect to: ")
+#HOST = '127.0.0.1'
 # check valid network address
 # check whether we are able to ping the addess
 
-#PORT = int(input("Enter the port number to connect to: "))
-PORT = 55777
+PORT = int(input("Enter the port number to connect to: "))
+#PORT = 55777
 
 # check valid port
 
-#request = input("Enter the operation to request (Date and Time, Uptime, Memory Use, Netstat, Current Users, or Running Processes): ")
-request = 'uptime'
+request = input("Enter the operation to request (Date and Time, Uptime, Memory Use, Netstat, Current Users, or Running Processes): ")
+#request = 'uptime'
 # change to switcher
 
 #numOfRequests = int(input("Enter the number of client requests to generate (1, 5, 10, 15, 20, or 25): "))
