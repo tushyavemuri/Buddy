@@ -13,7 +13,7 @@ def buddyRequest(HOST,PORT,request,elapsedTimes):
     startTime = time.time()
 
     buddy.send(request.encode())
-    response = buddy.recv(1024).decode('utf-8')
+    response = buddy.recv(10000).decode('utf-8')
 
     endTime = time.time()
     elapsedTime = endTime - startTime
