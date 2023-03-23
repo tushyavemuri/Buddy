@@ -12,42 +12,73 @@ def main():
     logging.getLogger('buddyFileLogger')
 
 
-    #HOST = input("Enter the network address to connect to: ")
-    HOST = '139.62.210.155'
+    HOST = input("Enter the network address to connect to: ")
+    #HOST = '139.62.210.155'
     # check valid network address
     # check whether we are able to ping the addess
 
-    #PORT = int(input("Enter the port number to connect to: "))
-    PORT = 55777
+    PORT = int(input("Enter the port number to connect to: "))
+    #PORT = 3333
 
-    # check valid port
+    while True:
+        # check valid port
+        print("""
+        1. Date and Time
+        2. Uptime
+        3. Memory
+        4. Network stats
+        5. Current Users
+        6. Running Processes
+        7. Exit
 
-    request = input("Enter the operation to request (Date, Uptime, Memory, Network, Users, or Processes): ")
-    #request = 'date'
-    # change to switcher
+        Select the required information about Host {HOST} from above options.
+        """)
 
-    #numOfRequests = int(input("Enter the number of client requests to generate (1, 5, 10, 15, 20, or 25): "))
-    numOfRequests = 5
-    # change to switcher
+        selection = input("")
 
-    elapsedTimes = []
-    threads = []
+        if selection not in [1,2,3,4,5,6,7]:
+            print("Invalid request")
+            continue
 
-    for i in range(numOfRequests):
-        t = threading.Thread(target=BR.buddyRequest, args=(HOST, PORT, request,elapsedTimes))
-        threads.append(t)
+        inputmap = {"1":"date",
+        "2":"uptime",
+        "3":"memory",
+        "4":"network",
+        "5":"users",
+        "6":"processes" 
+        }
 
-    for t in threads:
-        t.start()
+        if selection == 7:
+            print("Good bye!")
+            break
 
-    for t in threads:
-        t.join()
+        request = inputmap[selection]
 
-    totalTime = sum(elapsedTimes)
-    avgTime = totalTime / numOfRequests
 
-    logging.info("Total turn-around time: {:.3f} seconds".format(totalTime))
-    logging.info("Average turn-around time: {:.3f} seconds".format(avgTime))
+        # change to switcher
+
+        numOfRequests = int(input("Enter the number of client requests to generate (1, 5, 10, 15, 20, or 25): "))
+        # numOfRequests = 5
+        # change to switcher
+
+        elapsedTimes = []
+        threads = []
+
+        for i in range(numOfRequests):
+            t = threading.Thread(target=BR.buddyRequest, args=(HOST, PORT, request,elapsedTimes))
+            threads.append(t)
+
+        for t in threads:
+            t.start()
+
+        for t in threads:
+            t.join()
+
+        totalTime = sum(elapsedTimes)
+        avgTime = totalTime / numOfRequests
+
+        logging.info("Total turn-around time: {:.3f} seconds".format(totalTime))
+        logging.info("Average turn-around time: {:.3f} seconds".format(avgTime))
 
 
 if __name__ == "__main__":
