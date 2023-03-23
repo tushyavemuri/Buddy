@@ -34,25 +34,25 @@ def main():
         Select the required information about Host {HOST} from above options.
         """)
 
-        selection = input("")
+        selection = int(input(""))
 
         if selection not in [1,2,3,4,5,6,7]:
             print("Invalid request")
             continue
 
-        inputmap = {"1":"date",
-        "2":"uptime",
-        "3":"memory",
-        "4":"network",
-        "5":"users",
-        "6":"processes" 
+        inputmap = {1:"date",
+        2:"uptime",
+        3:"memory",
+        4:"network",
+        5:"users",
+        6:"processes" 
         }
 
         if selection == 7:
             print("Good bye!")
             break
 
-        request = inputmap[selection]
+        request = inputmap[int(selection)]
 
 
         # change to switcher
