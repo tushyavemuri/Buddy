@@ -13,7 +13,7 @@ def main():
 
 
     #HOST = input("Enter the network address to connect to: ")
-    HOST = '127.0.0.1'
+    HOST = '139.62.210.155'
     # check valid network address
     # check whether we are able to ping the addess
 
@@ -33,7 +33,7 @@ def main():
     elapsedTimes = []
     threads = []
 
-    for i in range(numOfRequests):s
+    for i in range(numOfRequests):
         t = threading.Thread(target=BR.buddyRequest, args=(HOST, PORT, request,elapsedTimes))
         threads.append(t)
 
