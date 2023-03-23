@@ -22,7 +22,7 @@ def main():
 
     while True:
         # check valid port
-        print("""
+        print(f"""
         1. Date and Time
         2. Uptime
         3. Memory
