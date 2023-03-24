@@ -19,8 +19,11 @@ def buddyRequest(HOST,PORT,request,elapsedTimes):
     elapsedTime = endTime - startTime
     logging.info("request took {:.3f} seconds".format(elapsedTime))
 
-    logging.info(f"request response is {response}")
-
+    print("#--------------------------------------------------------------------------------------------------------#")
+    print("")
+    print(f"{response}")
+    print("")
+    print("#--------------------------------------------------------------------------------------------------------#")
     buddy.close()
 
     elapsedTimes.append(elapsedTime)
