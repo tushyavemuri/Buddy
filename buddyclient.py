@@ -62,10 +62,12 @@ def main():
         # change to switcher
 
         elapsedTimes = []
+        startTimes = []
+        endTimes = []
         threads = []
 
         for i in range(numOfRequests):
-            t = threading.Thread(target=BR.buddyRequest, args=(HOST, PORT, request,elapsedTimes))
+            t = threading.Thread(target=BR.buddyRequest, args=(HOST, PORT, request,elapsedTimes,startTimes,endTimes))
             threads.append(t)
 
         for t in threads:
@@ -75,9 +77,11 @@ def main():
             t.join()
 
         totalTime = sum(elapsedTimes)
+        totalParallelTime = max(endTimes) - min(startTimes)
         avgTime = totalTime / numOfRequests
 
         logging.info("Total turn-around time: {:.3f} seconds".format(totalTime))
+        logging.info("Total parallel turn-around time: {:.3f} seconds".format(totalParallelTime))
         logging.info("Average turn-around time: {:.3f} seconds".format(avgTime))
 
 
