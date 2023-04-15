@@ -79,12 +79,12 @@ def main():
         totalTime = sum(elapsedTimes)
         totalParallelTime = max(endTimes) - min(startTimes)
         avgTime = totalTime / numOfRequests
-        avgParallelTime = totalParallelTime / numOfRequests
+        #avgParallelTime = totalParallelTime / numOfRequests
 
-        logging.info("Total turn-around time: {:.3f} seconds".format(totalTime))
-        logging.info("Total parallel turn-around time: {:.3f} seconds".format(totalParallelTime))
-        logging.info("Average turn-around time: {:.3f} seconds".format(avgTime))
-        logging.info("Average turn-around time: {:.3f} seconds".format(avgParallelTime))
+        logging.info("Total processing time: {:.3f} seconds".format(totalTime))
+        logging.info("Total parallel processing time: {:.3f} seconds".format(totalParallelTime))
+        logging.info("Average processing time: {:.3f} seconds".format(avgTime))
+        #logging.info("Average turn-around time: {:.3f} seconds".format(avgParallelTime))
 
 
 if __name__ == "__main__":
